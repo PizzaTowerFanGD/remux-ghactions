@@ -1,0 +1,30 @@
+name: Remux Video
+on:
+  workflow_dispatch:
+    inputs:
+      video_url:
+        description: 'Direct URL to video file'
+        required: true
+      filename:
+        description: 'Output filename (e.g., fixed.mp4)'
+        required: true
+
+jobs:
+  remux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download video
+        run: curl -L "${{ github.event.inputs.video_url }}" -o input.mp4
+
+      - name: Install ffmpeg
+        run: sudo apt update && sudo apt install -y ffmpeg
+
+      - name: Remux video
+        run: |
+          ffmpeg -i input.mp4 -c:v copy -c:a aac -b:a 128k "${{ github.event.inputs.filename }}"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: remuxed
+          path: ${{ github.event.inputs.filename }}
