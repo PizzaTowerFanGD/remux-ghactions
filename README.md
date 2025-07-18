@@ -1,5 +1,5 @@
 # Why this exists
-GitHub has free server load (up to 6h, unlimited on public repos), and it works surprisingly well for remuxing (pretty much just fixing) videos with ffmpeg!
+GitHub has free server load (up to 6h per action, with unlimited usage on public repos), and it works surprisingly well for remuxing (pretty much just fixing) videos with ffmpeg!
 (Actually the reason is that my device is dogshit)
 # How to use this
 1. Fork the repo, keep it public. (Orrr I guess you could run it here, if you don't care about privacy. Might as well be using Microsoft Edge too then.)
